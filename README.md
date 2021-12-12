@@ -1,6 +1,6 @@
 # Gophexercises
 ## Introduction
-Gophexercises are a group of tutorial Golang exercises created by Jon Calhoun. You can visit his website [here](https://courses.calhoun.io)
+Gophexercises are a group of tutorial Golang exercises created by Jon Calhoun. You can visit his website [here](https://courses.calhoun.io). This repository consists in my implementation of the Gophexercises with additional modifactions to improve the code.
 
 ## Development
 All exercises were developed using Go v1.17.3.
