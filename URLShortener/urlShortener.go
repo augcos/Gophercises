@@ -53,7 +53,7 @@ func main() {
 	}
 }
 
-// defaultMux function: create a http mux to use as the fallback
+// defaultMux function: creates a http mux to act as handler
 func defaultMux() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", hello)
