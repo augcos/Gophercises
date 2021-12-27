@@ -22,10 +22,10 @@ Remember to use the flags to overwrite the default settings (filename: problems.
 This exercise consisted in the creation of a URL shortener app. The app has a set of default path, url combinations, but you cand load more in a YAML or JSON format. To compile the code and run the binary, run from the URLShortener directory the following commands:
 ```
 go build urlShortener.go
-./urlShortener.go --filaname [name of the .yaml or .json file]
+./urlShortener --filaname [name of the .yaml or .json file]
 ```
 If you prefer to directly run the code, you can use the command:
 ```
-go run quizgame.go --csv [filename.csv]  --limit [time limit in seconds]
+go run urlShortener.go --filaname [name of the .yaml or .json file]
 ```
 Remember to use the flags to overwrite the default settings (filename: url.yaml). The app runs on port 8080, so to access a shortened url go in your browser to localhost:8080/url.
