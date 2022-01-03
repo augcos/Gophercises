@@ -56,7 +56,7 @@ func main() {
 	correct := 0
 
 	// we define problemLoop to break out of the loop when time expires
-problemLoop:
+	problemLoop:
 	for i, p := range problems {
 		fmt.Printf("Problem #%d: %s = \n", i+1, p.q) // We print the question
 		answerCh := make(chan string)                // We start a new channel to capture the answer
