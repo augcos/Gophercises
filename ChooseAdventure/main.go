@@ -8,7 +8,6 @@ import (
 	"strings"
 	"html/template"
 
-
 	"github.com/augcos/Gophercises/ChooseAdventure/adventure"
 )
 
@@ -29,10 +28,17 @@ func main() {
 	}
 
 	tpl := template.Must(template.New("").Parse(storyTpl))
-  _ = tpl
-	h := adventure.NewHandler(story)
+  simpleHandler := adventure.NewHandler(story)
+  complexHandler := adventure.NewHandler(story,
+    adventure.WithTemplate(tpl),
+    adventure.WithPathFunc(pathFn))
+  _ = simpleHandler
+    
+	mux := http.NewServeMux()
+	mux.Handle("/", simpleHandler)
+	mux.Handle("/story", complexHandler)
 	fmt.Printf("Starting the server on port %d\n", *port)
-	http.ListenAndServe(fmt.Sprintf(":%d", *port), h)
+	http.ListenAndServe(fmt.Sprintf(":%d", *port), mux)
 }
 
 
@@ -41,7 +47,7 @@ func pathFn(r *http.Request) string {
 	if path=="/story" || path=="/story/" {
 		path = "/story/intro"
 	}
-	return path[len("/story"):]
+	return path[len("/story/"):]
 }
 
 var storyTpl = `
@@ -60,7 +66,7 @@ var storyTpl = `
       {{if .Options}}
         <ul>
         {{range .Options}}
-          <li><a href="/{{.Chapter}}">{{.Text}}</a></li>
+          <li><a href="/story/{{.Chapter}}">{{.Text}}</a></li>
         {{end}}
         </ul>
       {{else}}
