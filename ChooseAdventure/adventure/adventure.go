@@ -141,7 +141,6 @@ func JsonStory(r io.Reader) (Story, error) {
 		return nil, err
 	}
 	return story, nil
-
 }
 
 
